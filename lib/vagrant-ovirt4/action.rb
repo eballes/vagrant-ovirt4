@@ -210,6 +210,12 @@ module VagrantPlugins
         end
       end
 
+      def self.action_snapshot_recover
+        with_ovirt do |env, b|
+          b.use SnapshotRecover
+        end
+      end
+
       action_root = Pathname.new(File.expand_path("../action", __FILE__))
       autoload :ConnectOVirt, action_root.join("connect_ovirt")
       autoload :CreateNetworkInterfaces, action_root.join("create_network_interfaces")
@@ -222,6 +228,7 @@ module VagrantPlugins
       autoload :ReadState, action_root.join("read_state")
       autoload :SetNameOfDomain, action_root.join("set_name_of_domain")
       autoload :SnapshotDelete, action_root.join("snapshot_delete")
+      autoload :SnapshotRecover, action_root.join("snapshot_recover")
       autoload :SnapshotList, action_root.join("snapshot_list")
       autoload :SnapshotSave, action_root.join("snapshot_save")
       autoload :StartVM, action_root.join("start_vm")

@@ -26,6 +26,11 @@ module VagrantPlugins
         Cap::SnapshotList
       end
 
+      provider_capability('ovirt4', 'snapshot_recover') do
+        require_relative 'cap/snapshot_recover'
+        Cap::SnapshotRecover
+      end
+
       config("ovirt4", :provider) do
         require_relative "config"
         Config
